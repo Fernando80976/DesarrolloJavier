@@ -1,18 +1,78 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# ===============================
+# Java / Spring Boot
+# ===============================
+*.class
+*.log
 
-# Other files and folders
+# ===============================
+# Maven
+# ===============================
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# ===============================
+# Gradle
+# ===============================
+/build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ===============================
+# IDEs
+# ===============================
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse / Spring Tool Suite
+.project
+.classpath
 .settings/
+.factorypath
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# VS Code
+.vscode/
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Spring Boot
+# ===============================
+logs/
+*.pid
+
+# ===============================
+# Environment variables
+# ===============================
+.env
+application-local.yml
+application-local.properties
+application-dev.yml
+application-dev.properties
+
+# ===============================
+# Test & coverage
+# ===============================
+/coverage/
+*.exec
+
+# ===============================
+# Lombok
+# ===============================
+lombok.config
