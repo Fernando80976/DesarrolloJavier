@@ -17,9 +17,8 @@ public class Profesor {
  Long id;
  String nombre;
  
- @OneToMany
- (mappedBy = "profesor"	,
- cascade = CascadeType.ALL)
+ @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
+
  Set<Email> emails= new HashSet<Email>();
  
  public Profesor() {
@@ -29,9 +28,11 @@ public class Profesor {
 	 emails.add(email);
 	 email.setProfesor(this);
  }
- public  void DelEmail(Email email) {
-	 emails.remove(email);
- }
+ public void delEmail(Email email) {
+	    emails.remove(email);
+	    email.setProfesor(null);
+	}
+
  public Profesor(String nombre) {
 	super();
 	this.nombre = nombre;

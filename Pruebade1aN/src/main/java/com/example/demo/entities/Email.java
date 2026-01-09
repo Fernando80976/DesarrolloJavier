@@ -4,10 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 @Entity
 public class Email {
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,11 @@ public class Email {
 	String gmail;
 	
 	@ManyToOne
-	Profesor profesor;	
+	@JoinColumn(name = "profesor_id")
+	private Profesor profesor;
+	public Email() {
+	}
+
 	public Email(String gmail) {
 		super();
 		this.gmail = gmail;
