@@ -29,7 +29,7 @@ public class WebController {
         this.repositorioPartida = repositorioP;
     }
 
-    // -------------------- ETAPA 1 --------------------
+    // ETAPA 1 
     @GetMapping("/")
     public String etapa1(Model modelo) {
         modelo.addAttribute("errores", "");
@@ -56,7 +56,7 @@ public class WebController {
         return "etapa2";
     }
 
-    // -------------------- ETAPA 2 --------------------
+    //  ETAPA 2 
     @PostMapping("/etapa2")
     public String procesarEtapa2(@RequestParam(required = false,name="signo") String signo,
                                  Model modelo,
@@ -80,7 +80,7 @@ public class WebController {
         return "etapa3";
     }
 
-    // -------------------- ETAPA 3 --------------------
+    //  ETAPA 3
     @PostMapping("/etapa3")
     public String procesarEtapa3(@RequestParam(required = false,name="aficciones") List<String> aficciones,
                                  Model modelo,
@@ -92,7 +92,7 @@ public class WebController {
 
         session.setAttribute("aficciones", aficciones);
 
-        // Guardar participante y partida
+        // Guardar participante , partida
         LocalDateTime ahora = LocalDateTime.now();
         String nombreUsuario = (String) session.getAttribute("nombre");
         Participantes participante = new Participantes(nombreUsuario);
@@ -105,7 +105,7 @@ public class WebController {
         repositorioParticipantes.save(participante);
         repositorioPartida.save(partida);
 
-        // Preparar datos para etapa4
+        // Preparar dts etapa4
         List<String> respuestas = new ArrayList<>();
         respuestas.add("Nombre: " + session.getAttribute("nombre"));
         respuestas.add("Signo: " + session.getAttribute("signo"));
@@ -115,7 +115,7 @@ public class WebController {
         return "etapa4";
     }
 
-    // -------------------- INFORMES --------------------
+    // informes
     @GetMapping("/reporte")
     public String reporte(Model modelo) {
         modelo.addAttribute("Puntos", repositorioPartida.findAllByOrderByPuntuacionDesc());
@@ -129,7 +129,7 @@ public class WebController {
         return "redirect:/reporte";
     }
 
-    // -------------------- UTIL --------------------
+   
     private boolean compNom(String nom) {
         String numeros = ".*[0-9].*";
         return !(nom == null || nom.isEmpty() || nom.length() < 2 || nom.length() > 30 || nom.matches(numeros));
